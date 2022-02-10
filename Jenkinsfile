@@ -28,6 +28,8 @@ pipeline {
                 // sh 'docker images -f dangling=true && \ docker rmi $(docker images -f dangling=true -q)' 
                 // sh 'docker run -d --name web \ -p 80:80 \ -p 443:443 \ -v /home/ubuntu/sslkey/:/var/jenkins_home/workspace/agaein/sslkey/ \ -v /etc/localtime:/etc/localtime:ro \ --network agaeinnet \ web:latest' 
                 // sh 'docker run -d --name server \ -v /etc/localtime:/etc/localtime:ro \ --network agaeinnet server:latest' 
+                sh 'docker stop $(docker ps -a -q)'
+                sh 'docker rm $(docker ps -a -q)'
                 sh 'docker run -d -p 8088:80 testimage'
             } 
         } 
