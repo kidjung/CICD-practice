@@ -12,6 +12,7 @@ pipeline {
             agent any 
             steps { 
                 // sh 'docker build -t web:latest /var/jenkins_home/workspace/agaein/agaein_web'
+                sh 'cd /var/lib/jenkins/workspace/testpipeline'
                 sh 'docker build . -t testimage' 
                 // sh 'docker build -t server:latest /var/jenkins_home/workspace/agaein/agaein_server' 
             } 
